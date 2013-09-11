@@ -1,4 +1,4 @@
-<style type="text/css">
+
 .boton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #bee2f9;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #bee2f9;
@@ -39,8 +39,9 @@
 	background:-moz-linear-gradient( center top, #468ccf 5%, #63b8ee 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee');
 	background-color:#468ccf;
-}.boton:active {
+}
+.boton:active {
 	position:relative;
 	top:1px;
-}</style>
+}
 
