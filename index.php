@@ -5,5 +5,17 @@
 <title>HomeHub</title>
 </head>
 <body>
-<a href="#" class="boton">Activar 1 cosa</a>
+
+<? 
+  $menudir = "menu.d";
+  $directorio = dir($menudir);
+  while ($fichero = $directorio->read()) {
+    $fichero = $menudir ."/" .$fichero;
+    $info = pathinfo($fichero);
+    if ($info['extension'] == 'php')
+    	include($fichero);
+  }
+  $directorio->close();
+?>
 </body>
+</html>
