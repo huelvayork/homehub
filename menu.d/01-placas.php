@@ -1,5 +1,5 @@
 <?
-  $temperatura = `cat /tmp/pachube*.out|grep Temp_28F8C8A9300F|cut -d, -f2`;
+  $temperatura = `cat /tmp/pachube*.out|grep Temp_2880AA9A30064|cut -d, -f2`;
 ?>
 
 <a href="#" class="boton">Temperatura Placas<br><?=$temperatura?></a>
