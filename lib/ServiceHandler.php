@@ -8,6 +8,7 @@ class ServiceHandler
 	public $stopCommand;
 	public $restartCommand;
 	public $statusCommand;
+	public $cssClass = "btn btn-primary btn-lg";
 
 	var $initScriptsPath = '/etc/init.d/';
 
@@ -28,7 +29,8 @@ class ServiceHandler
 	public function drawButton() {
 		$running = $this->isRunning();
 		$name = $this->name;
-		echo "<a href='#' class='boton'>$name<br>$running</a>";
+		$class = $this->cssClass;
+		echo "<a href='#' class='$class'> $name<br>$running</a>";
 	}
 }
 ?>
