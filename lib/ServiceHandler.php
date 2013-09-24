@@ -8,7 +8,7 @@ class ServiceHandler
 	public $stopCommand;
 	public $restartCommand;
 	public $statusCommand;
-	public $cssClass = "btn btn-primary btn-lg";
+	public $cssClass = "btn btn-primary btn-lg ";
 
 	var $initScriptsPath = '/etc/init.d/';
 
@@ -22,15 +22,22 @@ class ServiceHandler
 	}
 
 	public function isRunning() {
-		$result = (`pidof {self->service}` == '' ? false : true);
+		$result = (`pidof {$this->service}` == '' ? false : true);
 		return $result;
 	}
 
 	public function drawButton() {
 		$running = $this->isRunning();
 		$name = $this->name;
-		$class = $this->cssClass;
-		echo "<a href='#' class='$class'> $name<br>$running</a>";
+		if ($running) {
+			$class = $this->cssClass . " btn-green";
+			$txtRunning = "running";
+		} else {
+			$class = $this->cssClass . " btn-red";
+			$txtRunning = "stopped";
+		}
+		
+		echo "<a href='#' class='$class'> $name<br>$txtRunning</a>";
 	}
 }
 ?>
