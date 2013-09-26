@@ -8,7 +8,7 @@ class ServiceHandler
 	public $stopCommand;
 	public $restartCommand;
 	public $statusCommand;
-	public $cssClass = "btn btn-primary btn-lg ";
+	public $cssClass = "hhService btn btn-primary btn-lg ";
 
 	var $initScriptsPath = '/etc/init.d/';
 
@@ -37,7 +37,33 @@ class ServiceHandler
 			$txtRunning = "stopped";
 		}
 		
-		echo "<a href='#' class='$class'> $name<br>$txtRunning</a>";
+		echo "<a href='#modaldialog' class='$class' id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
+	}
+	
+	public function modalDialog() {
+?>
+<!-- pop-up modal -->
+<!-- Modal -->
+<div class="modal" id="hhServiceDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="hhServiceDialogTitle">Modal title</h4>
+            </div>
+            <div class="modal-body" id="hhServiceDialogBody">
+<p class='btn btn-primary btn-lg  btn-green'>Start</p>
+<p class='btn btn-primary btn-lg '>ReStart</p>
+<p class='btn btn-primary btn-lg  btn-red'>Stop</p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<?
 	}
 }
 ?>
