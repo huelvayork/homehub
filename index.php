@@ -33,13 +33,28 @@
     	include($fichero);
   }
   $directorio->close();
+?>
+<!-- pop-up modal -->
+<!-- Modal -->
+<div class="modal" id="hhDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title" id="hhDialogTitle">Modal title</h4>
+            </div>
+            <div class="modal-body" id="hhDialogBody">
+            </div>
+            <div class="modal-footer">  
+              <a href="#" class="btn" data-dismiss="modal">Close</a>  
+            </div> 
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
-//<div id="modaldialog" class="modal hide fade in" style="display: none; ">
-?>
-<div>
-<?
-  ServiceHandler::modalDialog();
-?>
+
 <script src="js/homehub.js"></script>
 </body>
 </html>

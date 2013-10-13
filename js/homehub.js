@@ -1,8 +1,13 @@
 function hhServiceSetup() {
-  $(".hhService").click(function(caller) {
-    $("#hhServiceDialogTitle").text("Control Servicios - " + caller.target.name);
-    $("#hhServiceDialog").modal();
-  });
+	$(".hhService").click(function(caller) {
+		serviceName = caller.target.name;
+		$("#hhDialogTitle").text("Control Servicios - " + serviceName);
+		$("#hhDialog").modal();
+		$("#hhDialogBody").load("lib/ServiceHandler-helper.php?action=show&service=" + serviceName);
+	});	
 }
 
+function hhServiceAction(serviceName, action) {
+		$("#hhDialogBody").load("lib/ServiceHandler-helper.php?action=" + action + "&service=" + serviceName);
+}
 $( document ).ready( hhServiceSetup );
