@@ -10,7 +10,7 @@ class ServiceHandler
 	public $statusCommand;
 	public $cssClass = "hhService btn btn-primary btn-lg ";
 
-	var $serviceCommand = '/usr/sbin/service';
+	var $serviceCommand = '/usr/bin/sudo /usr/sbin/service';
 
 	function __construct($name='') {
 		$this->name = $name;
