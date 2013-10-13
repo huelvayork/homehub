@@ -10,6 +10,12 @@
 		case 'start':
 			$service->start();
 			break;
+		case 'restart':
+			$service->restart();
+			break;
+		case 'start':
+			$service->stop();
+			break;
 		
 		
 		default:

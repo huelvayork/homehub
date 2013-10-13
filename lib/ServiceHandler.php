@@ -42,9 +42,9 @@ class ServiceHandler
 	
 	public function showDialog() {
 		?>
-		<p class='btn btn-primary btn-lg  btn-green' onclick="hhServiceAction('<?=$this->service?>','start');">Start</p>
-		<p class='btn btn-primary btn-lg '>ReStart</p>
-		<p class='btn btn-primary btn-lg  btn-red'>Stop</p>
+		<p class='btn btn-primary btn-lg btn-green' onclick="hhServiceAction('<?=$this->service?>','start');">Start</p>
+		<p class='btn btn-primary btn-lg' onclick="hhServiceAction('<?=$this->service?>','restart');">ReStart</p>
+		<p class='btn btn-primary btn-lg btn-red' onclick="hhServiceAction('<?=$this->service?>','stop');">Stop</p>
 		<?
 	}
 	public function start() {
@@ -64,5 +64,40 @@ class ServiceHandler
 		}
 
 	}
+	public function restart() {
+		$output = array();
+		$result = 0;
+		?>
+		<p> ReStarting <?=$this->name?></p>
+		<?
+		exec($this->restartCommand, $output, $result);
+		foreach ($output as $line) {
+			echo $line ."<br>";
+		}
+		if ($result != 0) {
+			echo "<p>ERROR - return code: $result</p>";
+		} else {
+			echo "<p>Success.</p>";
+		}
+
+	}	
+	public function stop() {
+		$output = array();
+		$result = 0;
+		?>
+		<p> Stopping <?=$this->name?></p>
+		<?
+		exec($this->stopCommand, $output, $result);
+		foreach ($output as $line) {
+			echo $line ."<br>";
+		}
+		if ($result != 0) {
+			echo "<p>ERROR - return code: $result</p>";
+		} else {
+			echo "<p>Success.</p>";
+		}
+
+	}
+
 }
 ?>
