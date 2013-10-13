@@ -13,7 +13,7 @@
 		case 'restart':
 			$service->restart();
 			break;
-		case 'start':
+		case 'stop':
 			$service->stop();
 			break;
 		
