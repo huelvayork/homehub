@@ -1,0 +1,8 @@
+#
+Just drop the files in any folder accessible via web.
+
+To start/stop services you need to add this line to your sudoers file:
+
+  www-data ALL= NOPASSWD: /usr/sbin/service
+
+
