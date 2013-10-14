@@ -25,14 +25,14 @@
 
 <? 
   $menudir = "menu.d";
-  $directorio = dir($menudir);
-  while ($fichero = $directorio->read()) {
-    $fichero = $menudir ."/" .$fichero;
-    $info = pathinfo($fichero);
+  $dir = dir($menudir);
+  while ($file = $dir->read()) {
+    $file = $menudir ."/" .$file;
+    $info = pathinfo($file);
     if ($info['extension'] == 'php')
-    	include($fichero);
+    	include($file);
   }
-  $directorio->close();
+  $dir->close();
 ?>
 <!-- pop-up modal -->
 <!-- Modal -->
