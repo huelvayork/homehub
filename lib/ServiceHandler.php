@@ -63,6 +63,7 @@ class ServiceHandler
 			echo "<p>Success.</p>";
 		}
 
+		$this->showDialog();
 	}
 	public function restart() {
 		$output = array();
@@ -80,6 +81,7 @@ class ServiceHandler
 			echo "<p>Success.</p>";
 		}
 
+		$this->showDialog();
 	}	
 	public function stop() {
 		$output = array();
@@ -97,7 +99,7 @@ class ServiceHandler
 			echo "<p>Success.</p>";
 		}
 
+		$this->showDialog();
 	}
-
 }
 ?>
