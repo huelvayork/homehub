@@ -1,3 +1,9 @@
+<?php
+require_once ('lib/Menu.class.php');
+
+$menu = new Menu();
+$menu->readWidgets();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,16 +29,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-<? 
-  $menudir = "menu.d";
-  $dir = dir($menudir);
-  while ($file = $dir->read()) {
-    $file = $menudir ."/" .$file;
-    $info = pathinfo($file);
-    if ($info['extension'] == 'php')
-    	include($file);
-  }
-  $dir->close();
+<?php
+  $menu->drawWidgets();
 ?>
 <!-- pop-up modal -->
 <!-- Modal -->
@@ -45,9 +43,9 @@
             </div>
             <div class="modal-body" id="hhDialogBody">
             </div>
-            <div class="modal-footer">  
-              <a href="#" class="btn" data-dismiss="modal">Close</a>  
-            </div> 
+            <div class="modal-footer">
+              <a href="#" class="btn" data-dismiss="modal">Close</a>
+            </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->

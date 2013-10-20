@@ -1,7 +1,3 @@
-<?
-
+<?php
 require_once('lib/ServiceHandler.php');
-$motionService = new ServiceHandler('motion');
-$motionService->drawButton();
-?>
-
+$this->registerWidget(new ServiceHandler('motion'));

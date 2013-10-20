@@ -1,5 +1,8 @@
-<?
-class ServiceHandler
+<?php
+
+require_once ('Widget.abstract.php');
+
+class ServiceHandler extends AWidget
 {
 	public $name;
 	public $service;
@@ -12,7 +15,8 @@ class ServiceHandler
 
 	var $serviceCommand = '/usr/bin/sudo /usr/sbin/service';
 
-	function __construct($name='') {
+	public function __construct($name='', $size=1) {
+		parent::__construct($size);
 		$this->name = $name;
 		$this->service = $name;
 		$this->startCommand = $this->serviceCommand .' ' .$this->service . ' start';
@@ -37,10 +41,26 @@ class ServiceHandler
 			$class = $this->cssClass . " btn-red";
 			$txtRunning = "stopped";
 		}
-		
-		echo "<a href='#modaldialog' class='$class' id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
+
+		echo "<a href='#modaldialog' class='$class' style=\"width:100%\" id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
 	}
-	
+
+	public function draw() {
+		$running = $this->isRunning();
+		$name = $this->name;
+		if ($running) {
+			$class = $this->cssClass . " btn-green";
+			$txtRunning = "running";
+		} else {
+			$class = $this->cssClass . " btn-red";
+			$txtRunning = "stopped";
+		}
+
+		$this->preDraw();
+		echo "<a href='#modaldialog' class='$class' style=\"width:100%\" id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
+		$this->postDraw();
+	}
+
 	public function showDialog() {
 		?>
 		<p class='btn btn-primary btn-lg btn-green' onclick="hhServiceAction('<?=$this->service?>','start');">Start</p>
@@ -83,7 +103,7 @@ class ServiceHandler
 		}
 
 		$this->showDialog();
-	}	
+	}
 	public function stop() {
 		$output = array();
 		$result = 0;
