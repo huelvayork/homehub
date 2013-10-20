@@ -22,7 +22,8 @@ class ServiceHandler
 	}
 
 	public function isRunning() {
-		$result = (`pidof {$this->service}` == '' ? false : true);
+		exec($this->statusCommand, $output);
+		$result = (strpos($output[0], 'process') === FALSE ? false : true);
 		return $result;
 	}
 
