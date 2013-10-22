@@ -70,11 +70,9 @@ class ServiceHandler extends AWidget
 		<?
 	}
 	public function start() {
+		echo "<p> Starting {$this->name}</p>";
 		$output = array();
 		$result = 0;
-		?>
-		<p> Starting <?=$this->name?></p>
-		<?
 		exec($this->startCommand, $output, $result);
 		foreach ($output as $line) {
 			echo $line ."<br>";
@@ -88,11 +86,9 @@ class ServiceHandler extends AWidget
 		$this->showDialog();
 	}
 	public function restart() {
+		echo "<p> ReStarting {$this->name}</p>";
 		$output = array();
 		$result = 0;
-		?>
-		<p> ReStarting <?=$this->name?></p>
-		<?
 		exec($this->restartCommand, $output, $result);
 		foreach ($output as $line) {
 			echo $line ."<br>";
@@ -106,11 +102,9 @@ class ServiceHandler extends AWidget
 		$this->showDialog();
 	}
 	public function stop() {
+		echo "<p> Stopping {$this->name}</p>";
 		$output = array();
 		$result = 0;
-		?>
-		<p> Stopping <?=$this->name?></p>
-		<?
 		exec($this->stopCommand, $output, $result);
 		foreach ($output as $line) {
 			echo $line ."<br>";
