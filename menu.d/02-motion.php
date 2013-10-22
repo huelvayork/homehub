@@ -1,3 +1,5 @@
 <?php
 require_once('lib/ServiceHandler.php');
-$this->registerWidget(new ServiceHandler('motion'));
+$widget = new ServiceHandler('motion');
+$widget->statusCommand = 'pidof motion';
+$this->registerWidget($widget);
