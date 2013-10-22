@@ -25,9 +25,10 @@ class ServiceHandler extends AWidget
 		$this->restartCommand = $this->serviceCommand .' ' .$this->service . ' restart';
 	}
 
-	public function isRunning() {
-		exec($this->statusCommand, $output);
-		$result = (strpos($output[0], 'process') === FALSE ? false : true);
+	public function isRunning() {		
+		exec($this->statusCommand, $output, $retval);		
+		// Standard init-scripts status command returns 0 when the service is running
+		$result = ( ($retval == 0) ? true : false);
 		return $result;
 	}
 
