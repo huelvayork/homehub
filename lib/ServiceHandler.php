@@ -25,25 +25,11 @@ class ServiceHandler extends AWidget
 		$this->restartCommand = $this->serviceCommand .' ' .$this->service . ' restart';
 	}
 
-	public function isRunning() {		
-		exec($this->statusCommand, $output, $retval);		
+	public function isRunning() {
+		exec($this->statusCommand, $output, $retval);
 		// Standard init-scripts status command returns 0 when the service is running
 		$result = ( ($retval == 0) ? true : false);
 		return $result;
-	}
-
-	public function drawButton() {
-		$running = $this->isRunning();
-		$name = $this->name;
-		if ($running) {
-			$class = $this->cssClass . " btn-green";
-			$txtRunning = "running";
-		} else {
-			$class = $this->cssClass . " btn-red";
-			$txtRunning = "stopped";
-		}
-
-		echo "<a href='#modaldialog' class='$class' style=\"width:100%\" id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
 	}
 
 	public function draw() {
