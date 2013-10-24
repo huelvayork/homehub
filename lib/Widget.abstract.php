@@ -40,7 +40,7 @@ abstract class AWidget implements IWidget {
 				$size_md = 3;
 				break;
 		}
-		echo "<div class=\"col-xs-$size_xs col-md-$size_md\" style=\"margin-top: 10px; display:inline-block\">\n";
+		echo "<div class=\"col-xs-$size_xs col-md-$size_md hb_widget\">\n";
 	}
 
 	abstract public function draw();
