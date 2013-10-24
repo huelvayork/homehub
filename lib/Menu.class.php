@@ -33,18 +33,16 @@ class Menu {
 				$widget->draw();
 				$num_cols += $widget->size;
 			}
-
-			if ($num_cols == 4) {
-				echo "</div> <!-- Row -->\n";
-				$num_cols = 0;
-				continue;
-			}
-
-			if ($num_cols+$widget->size > 4) {
+			else {
 				echo "</div> <!-- Row -->\n";
 				echo '<div class="row">';
 				$widget->draw();
 				$num_cols = $widget->size;
+			}
+
+			if ($num_cols == 4) {
+				echo "</div> <!-- Row -->\n";
+				$num_cols = 0;
 			}
 		}
 
