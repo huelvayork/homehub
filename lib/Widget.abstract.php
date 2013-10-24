@@ -7,6 +7,13 @@ abstract class AWidget implements IWidget {
 
 	public function __construct ($size=1)
 	{
+		if ($size < 1) {
+			$size = 1;
+		}
+		elseif ($size > 4) {
+			$size = 4;
+		}
+
 		$this->size = $size;
 	}
 
