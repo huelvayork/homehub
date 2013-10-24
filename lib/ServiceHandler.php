@@ -55,53 +55,40 @@ class ServiceHandler extends AWidget
 		<p class='btn btn-primary btn-lg btn-red' onclick="hhServiceAction('<?=$this->service?>','stop');">Stop</p>
 		<?
 	}
-	public function start() {
+
+	private function execCommand ($command)
+	{
+		$output = array();
+		$result = 0;
+		exec($command, $output, $result);
+		foreach ($output as $line) {
+			echo $line ."<br>";
+		}
+		if ($result != 0) {
+			echo "<p>ERROR - return code: $result</p>";
+		} else {
+			echo "<p>Success.</p>";
+		}
+
+		$this->showDialog();
+	}
+
+	public function start()
+	{
 		echo "<p> Starting {$this->name}</p>";
-		$output = array();
-		$result = 0;
-		exec($this->startCommand, $output, $result);
-		foreach ($output as $line) {
-			echo $line ."<br>";
-		}
-		if ($result != 0) {
-			echo "<p>ERROR - return code: $result</p>";
-		} else {
-			echo "<p>Success.</p>";
-		}
-
-		$this->showDialog();
+		$this->execCommand($this->startCommand);
 	}
-	public function restart() {
+
+	public function restart()
+	{
 		echo "<p> ReStarting {$this->name}</p>";
-		$output = array();
-		$result = 0;
-		exec($this->restartCommand, $output, $result);
-		foreach ($output as $line) {
-			echo $line ."<br>";
-		}
-		if ($result != 0) {
-			echo "<p>ERROR - return code: $result</p>";
-		} else {
-			echo "<p>Success.</p>";
-		}
-
-		$this->showDialog();
+		$this->execCommand($this->restartCommand);
 	}
-	public function stop() {
-		echo "<p> Stopping {$this->name}</p>";
-		$output = array();
-		$result = 0;
-		exec($this->stopCommand, $output, $result);
-		foreach ($output as $line) {
-			echo $line ."<br>";
-		}
-		if ($result != 0) {
-			echo "<p>ERROR - return code: $result</p>";
-		} else {
-			echo "<p>Success.</p>";
-		}
 
-		$this->showDialog();
+	public function stop()
+	{
+		echo "<p> Stopping {$this->name}</p>";
+		$this->execCommand($this->stopCommand);
 	}
 }
 ?>
