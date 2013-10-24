@@ -15,16 +15,10 @@ class Menu {
 
 	public function readWidgets ($directory='menu.d')
 	{
-		$dir = dir($directory);
-		$cont = 0;
-		while ($file = $dir->read()) {
-			$file = $directory ."/" .$file;
-			$info = pathinfo($file);
-			if ($info['extension'] == 'php') {
-				include($file);
-			}
+		$files = glob($directory.'/*.php');
+		foreach ($files as $file) {
+			include($file);
 		}
-		$dir->close();
 	}
 
 	public function drawWidgets ()
