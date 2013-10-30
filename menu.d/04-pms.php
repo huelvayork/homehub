@@ -1,3 +1,5 @@
 <?php
 require_once('lib/ServiceHandler.php');
-$this->registerWidget(new ServiceHandler('plexmediaserver'));
+$widget = new ServiceHandler('plexmediaserver');
+$widget->statusCommand = 'pidof "Plex Media Server"';
+$this->registerWidget($widget);
