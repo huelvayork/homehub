@@ -22,25 +22,25 @@ abstract class AWidget implements IWidget {
 		switch ($this->size) {
 			case 2:
 				$size_xs = 12;
-				$size_md = 6;
+				$size_sm = 6;
 				break;
 
 			case 3:
 				$size_xs = 12;
-				$size_md = 9;
+				$size_sm = 9;
 				break;
 
 			case 4:
 				$size_xs = 12;
-				$size_md = 12;
+				$size_sm = 12;
 				break;
 
 			default:
 				$size_xs = 6;
-				$size_md = 3;
+				$size_sm = 3;
 				break;
 		}
-		echo "<div class=\"col-xs-$size_xs col-md-$size_md hb_widget\">\n";
+		echo "<div class=\"col-xs-$size_xs col-sm-$size_sm hb_widget\">\n";
 	}
 
 	abstract public function draw();
