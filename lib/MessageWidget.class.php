@@ -16,9 +16,8 @@ class MessageWidget extends AWidget
 		$this->message = $message;
 	}
 
-	public function draw() {
-		$this->preDraw();
+	protected function render()
+	{
 		echo $this->message;
-		$this->postDraw();
 	}
 }

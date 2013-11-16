@@ -32,7 +32,7 @@ class ServiceHandler extends AWidget
 		return $result;
 	}
 
-	public function draw() {
+	protected function render() {
 		$running = $this->isRunning();
 		$name = $this->name;
 		if ($running) {
@@ -43,9 +43,7 @@ class ServiceHandler extends AWidget
 			$txtRunning = "stopped";
 		}
 
-		$this->preDraw();
 		echo "<a href='#modaldialog' class='$class' style=\"width:100%\" id='hhServiceHandler$name' name='$name'>$name<br>$txtRunning</a>";
-		$this->postDraw();
 	}
 
 	public function showDialog() {

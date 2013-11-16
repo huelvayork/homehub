@@ -17,7 +17,7 @@ abstract class AWidget implements IWidget {
 		$this->size = $size;
 	}
 
-	protected function preDraw()
+	public function draw()
 	{
 		switch ($this->size) {
 			case 2:
@@ -41,12 +41,9 @@ abstract class AWidget implements IWidget {
 				break;
 		}
 		echo "<div class=\"col-xs-$size_xs col-sm-$size_sm hh_widget\">\n";
+		$this->render();
+		echo "</div><!-- Widget -->\n";
 	}
 
-	abstract public function draw();
-
-	protected function postDraw()
-	{
-		echo "</div> <!-- Widget -->\n";
-	}
+	abstract protected function render();
 }
