@@ -44,8 +44,7 @@ class MessageWidget extends AWidget
 		if (! $this->isTable) {
 			echo "<div class=\"panel-body\">
 				{$this->message}
-					</div>
-				</div>\n";
+					</div>\n";
 		}
 		else {
 			echo $this->message;
@@ -54,5 +53,6 @@ class MessageWidget extends AWidget
 		if (! is_null($this->footer)) {
 			echo "<div class=\"panel-footer\">{$this->footer}</div>\n";
 		}
+		echo "</div>\n";
 	}
 }
