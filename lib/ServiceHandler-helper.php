@@ -1,4 +1,5 @@
-<?
+<?php
+
 	require_once('ServiceHandler.php');
 	$action = $_REQUEST['action'];
 	$serviceName = $_REQUEST['service'];
@@ -16,10 +17,9 @@
 		case 'stop':
 			$service->stop();
 			break;
-		
-		
 		default:
 			# code...
 			break;
 	}
+
 ?>

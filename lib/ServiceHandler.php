@@ -51,7 +51,7 @@ class ServiceHandler extends AWidget
 		<p class='btn btn-primary btn-lg btn-green' onclick="hhServiceAction('<?=$this->service?>','start');">Start</p>
 		<p class='btn btn-primary btn-lg' onclick="hhServiceAction('<?=$this->service?>','restart');">ReStart</p>
 		<p class='btn btn-primary btn-lg btn-red' onclick="hhServiceAction('<?=$this->service?>','stop');">Stop</p>
-		<?
+		<?php
 	}
 
 	private function execCommand ($command)
@@ -89,4 +89,5 @@ class ServiceHandler extends AWidget
 		$this->execCommand($this->stopCommand);
 	}
 }
+
 ?>
