@@ -59,9 +59,7 @@ class ServiceHandler extends AWidget
 		$output = array();
 		$result = 0;
 		exec($command, $output, $result);
-		foreach ($output as $line) {
-			echo $line ."<br>";
-		}
+		echo implode('<br>', $output);
 		if ($result != 0) {
 			echo "<p>ERROR - return code: $result</p>";
 		} else {
