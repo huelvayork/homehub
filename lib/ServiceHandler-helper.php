@@ -1,6 +1,6 @@
 <?php
 
-	require_once('ServiceHandler.php');
+	require_once('ServiceHandler.class.php');
 	$action = $_REQUEST['action'];
 	$serviceName = $_REQUEST['service'];
 	$service = new ServiceHandler($serviceName);
