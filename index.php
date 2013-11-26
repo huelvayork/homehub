@@ -1,8 +1,11 @@
 <?php
-require_once ('lib/Menu.class.php');
+$start_time = microtime(true);
 
-$menu = new Menu();
-$menu->readWidgets();
+require_once ('lib/loadClasses.php');
+
+$menu = Menu::getInstance('MainMenu1', 'menu.d');
+$menu->save();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +35,8 @@ $menu->readWidgets();
 <?php
   $menu->drawWidgets();
 ?>
+
+
 <!-- pop-up modal -->
 <!-- Modal -->
 <div class="modal" id="hhDialog">
@@ -46,13 +51,20 @@ $menu->readWidgets();
             <div class="modal-footer">
               <a href="#" class="btn" data-dismiss="modal">Close</a>
             </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+
 
 
 <script src="js/homehub.js"></script>
 </body>
 </html>
+<!--
+<?php 
+  $duration = microtime(true) - $start_time;
+  echo "Executed in $duration seconds";
+?>
+-->
+
+<?
