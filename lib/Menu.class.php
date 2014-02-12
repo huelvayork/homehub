@@ -2,10 +2,29 @@
 
 class Menu {
 	private $widgets;
+	private $name='';
 
-	public function __construct()
+	private function __construct($name = '')
 	{
 		$this->widgets = array();
+		$this->name = $name;
+	}
+
+	// Not singleTon. You can instantiate many instances, with different names.
+	// If you ask for an already defined instance (saved in the PHP session),
+	// the function returns the same instance. If not already defined, you get a new one
+	// The second parameter specifies the directory containing the widgets for this menu
+	public function getInstance ($name = '', $dir = null)
+	{
+		if ( isset ($_SESSION['hhMenu_' .$name])) 
+		{
+			$instance = unserialize($_SESSION['hhMenu_' .$name]);
+		} else {
+			$instance = new self($name);
+			if ( ! is_null($dir) ) 
+				$instance->readWidgets($dir);
+		}
+		return $instance;
 	}
 
 	public function registerWidget (IWidget $widget)
@@ -49,5 +68,10 @@ class Menu {
 		if ($num_cols != 4) {
 			echo "</div> <!-- Row -->\n";
 		}
+	}
+
+	public function save() 
+	{
+		$_SESSION['hhMenu_' .$this->name] = serialize($this);
 	}
 }
