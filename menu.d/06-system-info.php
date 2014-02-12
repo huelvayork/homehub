@@ -7,10 +7,17 @@ function human_filesize($bytes, $decimals = 2) {
     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
 }
 
+// Temperature
+$temperature = `sensors|grep temp1|head -1`;
+
+$message = '<table class="table table-condensed"><thead><tr><th>Temperature</th></tr></thead><tbody>';
+$message .= "<tr><td>$temperature</td></tr>\n";
+$message .= "</tbody></table>\n";
+
 // Filesystems to show.
 $filesystems = array ('/', '/media/almacen');
 
-$message = '<table class="table table-condensed"><thead><tr><th>File System</th><th style="text-align:center">Total</th><th style="text-align:center">Used</th><th style="text-align:center">Free</th></tr></thead><tbody>';
+$message .= '<table class="table table-condensed"><thead><tr><th>File System</th><th style="text-align:center">Total</th><th style="text-align:center">Used</th><th style="text-align:center">Free</th></tr></thead><tbody>';
 foreach ($filesystems as $fs) {
 	$total = disk_total_space($fs);
 	$free = disk_free_space($fs);
@@ -33,6 +40,6 @@ foreach ($filesystems as $fs) {
 $message .= "</tbody></table>\n";
 
 $msg_widget = new MessageWidget(2);
-$msg_widget->setHeader('File System Information');
+$msg_widget->setHeader('System Information');
 $msg_widget->setMessage ($message, TRUE);
 $this->registerWidget($msg_widget);
